@@ -1,0 +1,110 @@
+/* UNIVERSAL STYLES (apply to all pages) */
+body {
+  font-family: Bahnschrift, Arial;
+  background-color: #a4bfb1;
+  color: #333333;
+}
+
+/* Links */
+a {
+  color: rgb(60, 71, 154);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+a:hover {
+  color: rgb(224, 175, 83);
+}
+
+::selection {
+  color: rgb(224, 175, 83);
+  background-color:black;
+}
+
+ button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 10px;  
+}
+
+button:hover {
+  background-color:#738174; 
+}
+
+/* INDEX PAGE ONLY */
+.index header {
+  background-color: #738174;
+  color: white;
+  padding: 25px;
+  margin: 30px;
+  text-align: left;
+  border-radius: 10px;  
+
+}
+
+.index footer {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
+  margin: 10px 0;
+}
+
+.index ul{
+	list-style-type: none;
+}
+
+/* PRODUCT PAGE */
+h2 {
+  background-color: #738174;
+  color: white;
+  padding: 25px;
+  margin: 30px;
+  text-align: center;
+  border-radius: 10px;  
+
+}
+
+ol li, li.product {
+  list-style: none;
+  padding: 15px;
+  margin: 15px auto;
+  border-radius: 10px;  
+  background-color: #fff;
+  width: 250px;
+  text-align: center;
+}
+
+
+/* CONTACT PAGE */
+form {
+  padding: 15px;
+  border-radius: 10px;  
+  background-color: #fff;
+  width: 250px;
+  text-align: left;
+  margin: 30px auto;
+}
+
+.contact header {
+  background-color: #738174;
+  color: white;
+  padding: 25px;
+  margin: 30px;
+  text-align: center;
+  border-radius: 10px;  
+
+}
+
+body.contact {
+  text-align: center;
+}
+
+ul.contact {
+	list-style-type: none;
+}

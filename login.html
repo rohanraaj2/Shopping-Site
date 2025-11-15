@@ -2,14 +2,16 @@
 <html>
 <head>
 	<title>Please log in</title>
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
-<body>
-
+<body class='contact'>
+<header>
 <h1>Please log in with your credentials</h1><br>
-<hr>
+</header>
+
 <form action='processLogin.php' method='PUT'>
-	<p><label for=uName>Username:</label><input type='text' id=uName ' name=userName'required></p>
-	<p><label for=password>Password:</label><input type='password' id=password 'name=passkey' required></p>
+	<p><label for=uName>Username : </label><input type='text' id=uName ' name=userName'required></p>
+	<p><label for=password>Password : </label><input type='password' id=password 'name=passkey' required></p>
 	<!-- <input type='submit' value='Login'> -->
 </form>
 <a href='customer.html' target='_blank'><button>Login</button></a>

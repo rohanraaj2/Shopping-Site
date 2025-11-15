@@ -4,17 +4,20 @@
 
 <head>
 	<title>Registration page</title>
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
-<body>
+<body class='contact'>
 
-<h1>Register using the form below</h1><br>
-<hr>
+<header>
+<h1>Register using the form below</h1>
+</header>
+<br>
 
-<form action='processLogin.php' method='PUT'>
-	<p><label for=uName>Username:</label><input type='text' id=uName ' name=userName'required></p>
-	<p><label for=password>Password:</label><input type='password' id=password 'name=passkey' required></p>
-	<p><label for=cPassword>Confirm your password:</label><input type='password' id=cPassword 'name=cPasskey' required></p>
-	<input type='submit' value='Register'>
+<form action='processLogin.php' method='POST'>
+	<p><label for=uName>Username : </label><input type='text' id=uName ' name=userName'required></p>
+	<p><label for=password>Password : </label><input type='password' id=password 'name=passkey' required></p>
+	<p><label for=cPassword>Confirm password : </label><input type='password' id=cPassword 'name=cPasskey' required></p>
+	<button type='submit' value='Register' >Register</button>
 </form>
 
 <p><a href='login.html'><button>Cancel/Login</button></a></p>
