@@ -1,0 +1,149 @@
+body{
+	font-family:'Segoe UI';
+	height:925px;
+	width:500px;
+	margin:auto;
+	border:solid black 5px;
+}
+h1{
+	text-align:center;
+	text-decoration:underline;
+	font-size:50px;
+}
+
+
+form {
+	border:solid black 2px;
+	background-color:GhostWhite;
+	box-sizing:content-box;
+	width:50%;
+	height:22%;
+	text-align:center;
+	padding:15px 5px 15px 5px;
+	margin:auto;
+}
+
+label {
+	font-size:20px;
+}
+
+label:after {
+	content:':';
+}
+input[type='text'], input[type='password']{
+	margin:15px 5px 15px 5px;
+	height:10%;
+	font-size:16px;
+	opacity:0.5;
+	border:solid black 1px;
+	}
+	
+input[type='text']:focus, input[type='password']:focus{
+	border:solid black 2px;
+	}
+
+
+input[type='button'], input[type='submit']{
+	font-size:16px;
+	width:em;
+	height:2em;
+	text-align:center;
+	margin:auto 10px 10px 10px;
+	background-color:dodgerblue;
+	color:white;
+	border-color:white;
+}
+
+
+
+
+input[type='submit']:hover{
+	color:black;
+	background-color:red;
+	font-weight:bold;
+	border-color:black;
+	
+}
+
+input[type='button']:hover{
+	color:white;
+	background-color:springgreen;
+	border-color:yellow;
+	
+}
+
+
+textarea{
+	font-size:18px;
+	border:solid black 2px;
+	display:block;
+	margin:auto;
+	width:75%;
+	height:11%;
+	max-width:100%;
+	max-height:250px;
+	text-align:right;
+	/*resize:none;*/
+}
+
+p {
+	margin:20px 10px 20px 10px;
+	text-align:center;
+	font-size:18px;
+}
+p::first-letter{
+	font-family:papyrus;
+	font-size:35px;
+	font-weight:bold;
+}
+p::after{
+	display:block;
+	content:'How much wood would a woodchuck chuck if a woodchuck could chuck wood?';
+	font-style:italic;
+	text-decoration:underline 1px;
+	margin:0px 10px 10px 10px
+}
+
+table{
+	margin:25px auto 25px auto;
+	width: 65%;
+	height: 21%;
+	max-height:100;
+}
+table th{
+	font-size:25px;
+	color:magenta;
+	padding: 5px 10px 5px 5px;
+	
+}
+
+table tr{
+	font-size:17px;
+}
+
+table tr:nth-child(odd){
+	background-color:blue;
+	color:magenta;
+	
+}
+
+table tr:nth-child(even){
+	background-color:magenta;
+	color:blue;
+	
+}
+
+table td:first-child{
+	text-align:left;
+	
+}
+
+table td:last-child{
+	text-align:right;
+	
+}
+
+table td:not(:first-child):not(:last-child){
+	text-align:center;
+	
+}
