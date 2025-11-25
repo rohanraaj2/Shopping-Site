@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head><title>Pyjamas</title>
+
+<p align="right">
+    <button id="toggleDarkMode">Dark Mode</button>
+    <button id="returnHome">Home</button>
+</p>
+
 <link rel="stylesheet" type="text/css" href="mystyle.css"></head>
 <body>
 	<h2>Here is the list of our pyjamas</h2>
-	<ol>
+	
+	<p align='center'>
+	<label for="viewSelect" ><strong>View Products :</strong></label>
+	<select id="viewSelect">
+    <option value="vertical">Vertically</option>
+    <option value="horizontal">Horizontally</option>
+	</select>
+	</p>
+	
+	<ol id="productList">>
 		<li>
 			<img src="images/pyjamas1.webp" alt="black pyjama" width="150">
 			<p><strong>Black Printed Pyjamas</strong></p>
@@ -20,5 +35,7 @@
 			<p>Price: $20</p>
 			<a href="Pyjamas2.html" target=_blank>View More</a>
 		</li>
+		
+<script src="script.js"></script>
 </body>
 </html>

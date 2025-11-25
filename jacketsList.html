@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head><title>Jackets</title>
+
+<p align="right">
+    <button id="toggleDarkMode">Dark Mode</button>
+    <button id="returnHome">Home</button>
+</p>
+
 <link rel="stylesheet" type="text/css" href="mystyle.css"></head>
 <body>
 	<h2>Here is the list of our jackets</h2>
-	<ol>
+	
+	<p align='center'>
+	<label for="viewSelect" ><strong>View Products :</strong></label>
+	<select id="viewSelect">
+    <option value="vertical">Vertically</option>
+    <option value="horizontal">Horizontally</option>
+	</select>
+	</p>
+	
+	<ol id="productList">>
 		<li>
 			<img src="images/jacket1.webp" alt="leather jacket" width="150">
 			<p><strong>Leather Jacket</strong></p>
 			<p>Price: $100</p>
-			<a href="Jacket1.html" target=_blank>View More</a>
+			<a href="Jacket1.html">View More</a>
 		</li>
 		
 		<br><br><br><br>
@@ -18,7 +33,8 @@
 			<img src="images/jacket2.webp" alt="puffer jacket" width="150">
 			<p><strong>Puffer Jacket</strong></p>
 			<p>Price: $120</p>
-			<a href="Jacket2.html" target=_blank>View More</a>
+			<a href="Jacket2.html">View More</a>
 		</li>
+<script src="script.js"></script>
 </body>
 </html>

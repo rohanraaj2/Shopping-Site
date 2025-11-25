@@ -1,48 +1,19 @@
 /* UNIVERSAL STYLES (apply to all pages) */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 12px;
+  font-family: Bahnschrift, Arial;
   background-color: #a4bfb1;
   color: #333333;
-  text-align: center;
 }
 
-/* Paragraphs */
-p {
-  text-align: right;
-}
-
-/* Table headers */
-th {
-  background-color: lightgray;
-}
-
-/* Links - Different styles for various states */
-a:link {
-  color: #3c479a;
-  text-decoration: none;
-  margin: 0 10px;
-  font-weight: bold;
-}
-
-a:visited {
-  color: #8e44ad;
+/* Links */
+a {
+  color: rgb(60, 71, 154);
   text-decoration: none;
   margin: 0 10px;
 }
 
 a:hover {
-  color: #e0af53;
-  text-decoration: underline;
-  background-color: #2c3e50;
-  padding: 2px 5px;
-  border-radius: 3px;
-}
-
-a:active {
-  color: #e74c3c;
-  text-decoration: none;
-  margin: 0 10px;
+  color: rgb(224, 175, 83);
 }
 
 ::selection {
@@ -136,4 +107,63 @@ body.contact {
 
 ul.contact {
 	list-style-type: none;
+}
+
+
+/* DARK MODE */
+
+
+.dark-mode {
+  background-color: #2f2f2f;
+  color: #ebebeb;
+}
+
+.dark-mode header {
+  background-color: #454545;
+  color: white;
+}
+
+.dark-mode a {
+  color: rgb(134, 140, 186);
+}
+
+.dark-mode a:hover {
+  color: rgb(224, 175, 83);
+}
+
+.dark-mode button {
+  background-color: rgb(128, 83, 0);
+  color: white;
+}
+
+.dark-mode button:hover {
+  background-color:#454545; 
+}
+
+.dark-mode h2 {
+  background-color: #454545;
+  color: white;
+}
+
+.dark-mode ol li,
+.dark-mode li.product {
+  background-color: #454545;
+}
+
+.dark-mode form {
+  background-color: #454545;
+}
+
+
+
+.vertical-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.horizontal-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* so they don’t overflow */
 }
