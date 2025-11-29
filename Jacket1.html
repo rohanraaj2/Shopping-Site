@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Leather Jacket</title>
-		<p align="right">
+
+<head>
+	<title>Leather Jacket</title>
+	<p align="right">
 		<button id="toggleDarkMode">Dark Mode</button>
 		<button id="returnHome">Home</button>
-		</p>
+	</p>
 
-		<link rel="stylesheet" type="text/css" href="mystyle.css">
-	</head>
-	<body>
-		<h2>Leather Jacket</h2>
-		<li class='product'>
-			<img src="images/jacket1.webp" alt="leather jacket" width="150">
-			<p>Classic black leather jacket crafted for a timeless look.<br>
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+
+<body onload="getTotalPrice(100)">
+	<h2>Leather Jacket</h2>
+	<li class='product'>
+		<img src="images/jacket1.webp" alt="leather jacket" width="150">
+		<p>Classic black leather jacket crafted for a timeless look.<br>
 			Made from genuine leather with durable inner lining.<br>
 			Perfect for both casual and evening wear.</p>
-			<p>Material: <em>100% genuine leather</em></p>
-			<p>Produced in: <em>Italy</em></p>
-			<p>Price: <strong>$100</strong></p>
-			<button>Add to cart</button>
-		</li>
+		<p>Material: <em>100% genuine leather</em></p>
+		<p>Produced in: <em>Italy</em></p>
+		<p>Price: <strong>$100</strong></p>
+		<label id="priceAfterTaxes">Price after taxes: getTotalPrice(100)</label>
+		<button>Add to cart</button>
+	</li>
 	<script src="script.js"></script>
-	</body>
+</body>
+
 </html>

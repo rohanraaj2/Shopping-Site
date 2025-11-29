@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Gym Hoodie</title>
-		
-		<p align="right">
+
+<head>
+	<title>Gym Hoodie</title>
+
+	<p align="right">
 		<button id="toggleDarkMode">Dark Mode</button>
 		<button id="returnHome">Home</button>
-		</p>
-		
-		<link rel="stylesheet" type="text/css" href="mystyle.css">
-	</head>
-	<body>
-		<h2>Gym Hoodie</h2>
-		<li class='product'>
-			<img src="images/hoodie2.jpg" alt="gym hoodie" width="150">
-			<p>Comfort-fit cotton hoodie made for workouts and active wear.<br>
+	</p>
+
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+
+<body onload="getTotalPrice(20)">
+	<h2>Gym Hoodie</h2>
+	<li class='product'>
+		<img src="images/hoodie2.jpg" alt="gym hoodie" width="150">
+		<p>Comfort-fit cotton hoodie made for workouts and active wear.<br>
 			Soft inner lining provides warmth without restricting movement.<br>
 			Perfect for gym sessions, runs, or casual everyday outfits.</p>
-			<p>Material: <em>100% cotton</em></p>
-			<p>Produced in: <em>Germany</em></p>
-			<p>Price: <strong>$20</strong></p>
-			<button>Add to cart</button>
-		</li>
+		<p>Material: <em>100% cotton</em></p>
+		<p>Produced in: <em>Germany</em></p>
+		<p>Price: <strong>$20</strong></p>
+		<label id="priceAfterTaxes">Price after taxes: getTotalPrice(20)</label>
+		<button>Add to cart</button>
+	</li>
 	<script src="script.js"></script>
-	</body>
+</body>
+
 </html>

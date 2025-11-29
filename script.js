@@ -22,16 +22,12 @@ if (homeBtn != null) {
     };
 }
 
-
-
-
 var productList = document.getElementById("productList");
 var viewSelect = document.getElementById("viewSelect");
 
 if (productList != null && viewSelect != null) {
     viewSelect.onchange = function() {
         var choice = viewSelect.value;
-
         if (choice === "horizontal") {
             productList.classList.remove("vertical-layout");
             productList.classList.add("horizontal-layout");
@@ -42,9 +38,6 @@ if (productList != null && viewSelect != null) {
     };
 }
 
-
-		
-
 function checkCredentials() {
 	let usernode=document.getElementById('uName');
 	let numbnode=document.getElementById('password');
@@ -54,7 +47,7 @@ function checkCredentials() {
 		usernode.style.backgroundColor='springgreen';
 		usernode.style.fontWeight='bold';
 		usernode.style.color='white';
-	}else{
+	} else {
 		usernode.style.backgroundColor='red';
 		usernode.style.fontWeight='bold';
 		usernode.style.color='black';
@@ -64,15 +57,11 @@ function checkCredentials() {
 		numbnode.style.backgroundColor='springgreen';
 		numbnode.style.fontWeight='bold';
 		numbnode.style.color='white';
-	}else{
+	} else {
 		numbnode.style.backgroundColor='red';
 		numbnode.style.fontWeight='bold';
 		numbnode.style.color='black';
 	}
-	
-	
-	
-	
 }
 
 function checkRegister() {
@@ -96,7 +85,7 @@ function checkRegister() {
 		numbnode.style.backgroundColor='springgreen';
 		numbnode.style.fontWeight='bold';
 		numbnode.style.color='white';
-	}else{
+	} else {
 		numbnode.style.backgroundColor='red';
 		numbnode.style.fontWeight='bold';
 		numbnode.style.color='black';
@@ -137,8 +126,16 @@ function addToCollection(indicator){
 			displayList();
 			return;
 		}
-	
 	}
 	collectionList.push(purchaseObject);
 	displayList();
+}
+
+function getTotalPrice(priceWOTax) {
+	const final_price = priceWOTax * 1.19;
+	const priceAfterTaxesLabel = document.getElementById("priceAfterTaxes");
+	if (priceAfterTaxesLabel) {
+		priceAfterTaxesLabel.textContent = `Price after taxes: $${final_price.toFixed(2)}`;
+	}
+	return final_price;
 }
