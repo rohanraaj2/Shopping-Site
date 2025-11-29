@@ -19,11 +19,11 @@
 </header>
 <br>
 
-<form action='processLogin.php' method='POST'>
+<form>
 	<p><label for=uName>Username : </label><input type='text' id=uName ' name=userName'required></p>
 	<p><label for=password>Password : </label><input type='password' id=password 'name=passkey' required></p>
 	<p><label for=cPassword>Confirm password : </label><input type='password' id=cPassword 'name=cPasskey' required></p>
-	<button type='submit' value='Register' >Register</button>
+	<button type='button' onclick='checkRegister()'value='Register' >Register</button>
 </form>
 
 <p><a href='login.html'><button>Cancel/Login</button></a></p>

@@ -8,7 +8,7 @@
 </p>
 
 <link rel="stylesheet" type="text/css" href="mystyle.css"></head>
-<body>
+<body onload='displayList()'>
 	<h2>Here is the list of our hoodies</h2>
 	
 	<p align='center'>
@@ -20,20 +20,24 @@
 	</p>
 	
 	<ol id="productList">
-		<li>
+		<li id='Hoodie1'>
 			<img src="images/hoodie1.jpeg" alt="code hoodie" width="150">
 			<p><strong>Code Hoodie</strong></p>
 			<p>Price: $20</p>
 			<a href="Hoodie1.html">View More</a>
+			<input type='text' name='quantity' value=1 />
+			<button onclick='addToCollection(Hoodie1)'>Add to List!</button>
 		</li>
 		
 		<br><br><br><br>
 		
-		<li>
+		<li id='Hoodie2'>
 			<img src="images/hoodie2.jpg" alt="gym hoodie" width="150">
 			<p><strong>Gym Hoodie</strong></p>
 			<p>Price: $20</p>
 			<a href="Hoodie2.html">View More</a>
+			<input type='text'  name='quantity' value=1 />
+			<button onclick='addToCollection(Hoodie2)'>Add to List!</button>
 		</li>
 		
 	</ol>
