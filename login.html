@@ -16,7 +16,8 @@
 </header>
 <form action='processLogin.php' method='PUT'>
 	<p><label for=uName>Username : </label><input type='text' id=uName ' name=userName'required></p>
-	<p><label for=password>Password : </label><input type='password' id=password 'name=passkey' required></p>
+	<p><label for=password>Password : </label><input type='password' id=password 'name=passkey' oninput='validatePasswordStrength()' required></p>
+	<p id='passwordStrength' style='display:none; margin-left: 100px;'></p>
 	<!-- <input type='submit' value='Login'> -->
 </form>
 <button onclick='checkCredentials()'>Login</button>

@@ -101,12 +101,12 @@ function checkRegister() {
 	}
 }
 
-var collectionList= [];
+var cartList= [];
 
-function displayList(){
+function displayCart(){
 	document.lastChild.lastChild.removeChild(document.lastChild.lastChild.lastChild);
 	let displayList=document.createElement('ol');
-	for (item of collectionList){
+	for (item of cartList){
 		let displayItem=document.createElement('li');
 		displayItem.innerText=item.toString();
 		displayList.appendChild(displayItem);
@@ -114,21 +114,21 @@ function displayList(){
 	document.lastChild.lastChild.appendChild(displayList);
 }
 
-function addToCollection(indicator){
+function addToCart(indicator){
 	purchaseObject={}
 	purchaseObject.name=indicator.firstElementChild.getAttribute('alt');
 	purchaseObject.quantity=indicator.lastElementChild.previousElementSibling.value;
 	purchaseObject.toString= function(){return this.name+ ' quantity: '+this.quantity;};
-	for (item of collectionList){
+	for (item of cartList){
 		if(item.name===purchaseObject.name){
 			item.quantity=Number(item.quantity)+Number(purchaseObject.quantity);
 			console.log(item.name,item.quantity);
-			displayList();
+			displayCart();
 			return;
 		}
 	}
-	collectionList.push(purchaseObject);
-	displayList();
+	cartList.push(purchaseObject);
+	displayCart();
 }
 
 function getTotalPrice(priceWOTax) {
@@ -138,4 +138,96 @@ function getTotalPrice(priceWOTax) {
 		priceAfterTaxesLabel.textContent = `Price after taxes: $${final_price.toFixed(2)}`;
 	}
 	return final_price;
+}
+
+// Function to remove items from cart with confirmation
+function removeFromCart(itemName) {
+	let itemFound = false;
+	let itemIndex = -1;
+	
+	// Search for the item in the cart
+	for (let i = 0; i < cartList.length; i++) {
+		if (cartList[i].name === itemName) {
+			itemFound = true;
+			itemIndex = i;
+			break;
+		}
+	}
+	
+	if (itemFound) {
+		// Create confirmation message
+		const confirmMessage = `Remove ${cartList[itemIndex].name} (quantity: ${cartList[itemIndex].quantity}) from your cart?`;
+		
+		if (confirm(confirmMessage)) {
+			// Remove the item from cart
+			cartList.splice(itemIndex, 1);
+			
+			// Update the display
+			displayCart();
+			
+			// Show success message
+			alert(`${itemName} has been removed from your cart!`);
+			console.log(`Removed ${itemName} from cart. Remaining items: ${cartList.length}`);
+		} else {
+			console.log('Removal cancelled by user');
+		}
+	} else {
+		alert(`Item "${itemName}" not found in your cart.`);
+		console.warn(`Attempted to remove non-existent item: ${itemName}`);
+	}
+}
+
+// Function to validate and provide real-time password strength feedback
+function validatePasswordStrength() {
+	const passwordNode = document.getElementById('password');
+	const strengthIndicator = document.getElementById('passwordStrength');
+	
+	if (!passwordNode) {
+		console.error('Password field not found');
+		return;
+	}
+	
+	const password = passwordNode.value;
+	let strength = 0;
+	let strengthText = '';
+	let strengthColor = '';
+	
+	// Check password criteria
+	if (password.length >= 8) strength++;
+	if (password.length >= 12) strength++;
+	if (/[a-z]/.test(password)) strength++;
+	if (/[A-Z]/.test(password)) strength++;
+	if (/[0-9]/.test(password)) strength++;
+	if (/[^a-zA-Z0-9]/.test(password)) strength++;
+	
+	// Determine strength level
+	if (password.length === 0) {
+		strengthText = '';
+		strengthColor = 'transparent';
+	} else if (strength <= 2) {
+		strengthText = 'Weak Password';
+		strengthColor = 'red';
+		passwordNode.style.borderColor = 'red';
+	} else if (strength <= 4) {
+		strengthText = 'Medium Password';
+		strengthColor = 'orange';
+		passwordNode.style.borderColor = 'orange';
+	} else {
+		strengthText = 'Strong Password';
+		strengthColor = 'green';
+		passwordNode.style.borderColor = 'green';
+	}
+	
+	// Update strength indicator if it exists
+	if (strengthIndicator) {
+		strengthIndicator.textContent = strengthText;
+		strengthIndicator.style.color = strengthColor;
+		strengthIndicator.style.fontWeight = 'bold';
+		strengthIndicator.style.display = password.length > 0 ? 'block' : 'none';
+	}
+	
+	// Add visual feedback to password field
+	passwordNode.style.borderWidth = '2px';
+	
+	return strength;
 }

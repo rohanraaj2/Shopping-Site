@@ -21,7 +21,8 @@
 
 <form>
 	<p><label for=uName>Username : </label><input type='text' id=uName ' name=userName'required></p>
-	<p><label for=password>Password : </label><input type='password' id=password 'name=passkey' required></p>
+	<p><label for=password>Password : </label><input type='password' id=password 'name=passkey' oninput='validatePasswordStrength()' required></p>
+	<p id='passwordStrength' style='display:none; margin-left: 100px;'></p>
 	<p><label for=cPassword>Confirm password : </label><input type='password' id=cPassword 'name=cPasskey' required></p>
 	<button type='button' onclick='checkRegister()'value='Register' >Register</button>
 </form>

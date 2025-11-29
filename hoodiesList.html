@@ -8,7 +8,7 @@
 </p>
 
 <link rel="stylesheet" type="text/css" href="mystyle.css"></head>
-<body onload='displayList()'>
+<body onload='displayCart()'>
 	<h2>Here is the list of our hoodies</h2>
 	
 	<p align='center'>
@@ -26,7 +26,7 @@
 			<p>Price: $20</p>
 			<a href="Hoodie1.html">View More</a>
 			<input type='text' name='quantity' value=1 />
-			<button onclick='addToCollection(Hoodie1)'>Add to List!</button>
+			<button onclick='addToCart(Hoodie1)'>Add to Cart!</button>
 		</li>
 		
 		<br><br><br><br>
@@ -37,10 +37,19 @@
 			<p>Price: $20</p>
 			<a href="Hoodie2.html">View More</a>
 			<input type='text'  name='quantity' value=1 />
-			<button onclick='addToCollection(Hoodie2)'>Add to List!</button>
+			<button onclick='addToCart(Hoodie2)'>Add to Cart!</button>
 		</li>
 		
 	</ol>
+	
+	<hr>
+	<h3>Your Shopping Cart</h3>
+	<div style='margin: 20px;'>
+		<p>Remove items from cart:</p>
+		<button onclick="removeFromCart('code hoodie')">Remove Code Hoodie</button>
+		<button onclick="removeFromCart('gym hoodie')">Remove Gym Hoodie</button>
+	</div>
+	<ol></ol>
 <script src="script.js"></script>
 </body>
 </html>
