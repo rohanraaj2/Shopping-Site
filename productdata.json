@@ -1,0 +1,96 @@
+{
+	"hoodies" : [
+	 {
+		"pid": 1,
+		"name": "Code Hoodie",
+		"description":"Premium cotton hoodie designed for developers and tech lovers.Features a sleek printed source-code pattern and a cozy fleece interior.Ideal for coding marathons, study nights, or casual wear.",
+		"imagepath": "images/hoodie1.jpeg",
+		"price": 20,
+		"category":"Tops",
+		"subcategory":"Hoodies",
+		"country":"Greece",
+		"material":"cotton"
+	 },
+	 {
+		"pid": 2,
+		"name":"Gym Hoodie",
+		"description":"Comfort-fit cotton hoodie made for workouts and active wear.Soft inner lining provides warmth without restricting movement.Perfect for gym sessions, runs, or casual everyday outfits.",
+		"imagepath":"images/hoodie2.jpg",
+		"price": 20,
+		"category":"Tops",
+		"subcategory":"Hoodies"	,
+		"country":"Germany",
+		"material":"cotton"	 
+	 }
+	],
+	"jackets" : [
+	 {
+		"pid": 1,
+		"name":"Leather Jacket",
+		"description":"Classic black leather jacket crafted for a timeless look.Made from genuine leather with durable inner lining.Perfect for both casual and evening wear.",
+		"imagepath":"images/jacket1.webp",
+		"price": 100,
+		"category":"Tops",
+		"subcategory":"Jackets",
+		"country":"Italy",
+		"material":"genuine leather"
+	 },
+	 {
+		"pid": 2,
+		"name":"Puffer Jacket",
+		"description":"Lightweight insulated jacket built to keep you warm in cold weather.Features water-resistant nylon shell and soft synthetic filling.Ideal for outdoor adventures and winter city wear.",
+		"imagepath":"images/jacket2.webp",
+		"price":120,
+		"category":"Tops",
+		"subcategory":"Jackets"	,
+		"country":"Pakistan",
+		"material-outer":"nylon",
+		"material-inner":"polyester"	
+	 }],
+	"pants" : [
+	 {
+		"pid": 1,
+		"name":"Khaki Pants",
+		"description":"Classic khaki trousers made from soft cotton twill fabric.Tailored fit with side and back pockets for everyday comfort.Perfect for casual outings or semi-formal occasions.",
+		"imagepath":"images/pants1.jpeg",
+		"price":40,
+		"category":"Bottoms",
+		"subcategory":"Pants",
+		"country":"Pakistan",
+		"material":"cotton"
+	 },
+	 {
+		"pid": 2,
+		"name":"Black Pants",
+		"description":"Sleek black pants with a clean modern cut.Made from stretchable cotton blend for flexibility and comfort.Ideal for office wear, events, or a casual evening look.",
+		"imagepath":"images/pants2.webp",
+		"price":40,
+		"category":"Bottoms",
+		"subcategory":"Pants",
+		"country":"Turkey",
+		"material":"cotton"		 
+	 }],
+	"pyjamas" : [
+	 {
+		"pid": 1,
+		"name":"Black Printed Pyjamas",
+		"description":"Soft cotton pyjamas with a stylish black printed pattern.Breathable and lightweight, offering maximum comfort for sleep or lounging.Designed for a relaxed fit and everyday use.",
+		"imagepath":"images/pyjamas1.webp",
+		"price":20,
+		"category":"Bottoms",
+		"subcategory":"Pyjamas",
+		"country":"Indonesia",
+		"material":"cotton"
+	 },
+	 {
+		"pid": 2,
+		"name":"Red Printed Pyjamas",
+		"description":"Comfortable red pyjamas with a playful printed design.Made from soft breathable fabric for a cozy night's sleep.Perfect for winter nights or relaxed weekend mornings.",
+		"imagepath":"images/pyjamas2.webp",
+		"price":20,
+		"category":"Bottoms",
+		"subcategory":"Pyjamas",
+		"country":"Bangladesh",
+		"material":"cotton"		 
+	 }]
+}

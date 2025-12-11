@@ -39,7 +39,15 @@
 			<input type='text' name='quantity' value=1 />
 			<button onclick='addToCart(Pyjamas2)'>Add to Cart!</button>
 		</li>
-	</ol>	
+	</ol>
+
+	<h3>Your Shopping Cart</h3>
+	<div style='margin: 20px;'>
+		<p>Remove items from cart:</p>
+		<button onclick="removeFromCart('black pyjama')">Remove Black Pyjama</button>
+		<button onclick="removeFromCart('red pyjama')">Remove Red Pyjama</button>
+	</div>
+	<ol></ol>
 <script src="script.js"></script>
 </body>
 </html>
