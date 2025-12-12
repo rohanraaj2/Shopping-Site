@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	
+	<p align="right">
+    <button id="toggleDarkMode">Dark Mode</button>
+    <button id="returnHome">Home</button>
+	</p>
+
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+<body class='contact'>
+<header>
+    <h1>Your Profile</h1>
+</header>
+    <form><p>
+        <label for="name">Username : </label>
+        <input type="text" id="uName" name="name" value="JohnDoe" required>
+        </p>
+        <p>
+        <label for="password">Password : </label>
+        <input type="password" id="password" name="password" value="1234567890010103020938429" required>
+        </p><p>   
+        <button type='button' onclick='checkCredentials()'>Update Profile</button></p>
+    </form>
+<a href='index.php'>Back to homepage</a><br>
+<a href='logout.php'>Logout</a>
+
+<script src="script.js"></script>
+
+</body>
+</html>
