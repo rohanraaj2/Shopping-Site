@@ -1,3 +1,13 @@
+<?php
+// Load and parse the JSON file
+$jsonFile = 'productdata.json';
+$jsonData = file_get_contents($jsonFile);
+$productsData = json_decode($jsonData, true);
+
+// Get pyjamas data
+$pyjamas = $productsData['pyjamas'];
+?>
+
 <!DOCTYPE html>
 <html>
 <head><title>Pyjamas</title>
@@ -19,33 +29,29 @@
 	</select>
 	</p>
 	
-	<ol id="productList">>
-		<li id='Pyjamas1'>
-			<img src="images/pyjamas1.webp" alt="black pyjama" width="150">
-			<p><strong>Black Printed Pyjamas</strong></p>
-			<p>Price: $20</p>
-			<a href="Pyjamas1.php" target=_blank>View More</a>
+	<ol id="productList">
+		<?php foreach ($pyjamas as $pyjama): ?>
+		<li id='Pyjamas<?php echo $pyjama['pid']; ?>'>
+			<img src="<?php echo htmlspecialchars($pyjama['imagepath']); ?>" 
+			     alt="<?php echo htmlspecialchars($pyjama['name']); ?>" 
+			     width="150">
+			<p><strong><?php echo htmlspecialchars($pyjama['name']); ?></strong></p>
+			<p>Price: $<?php echo htmlspecialchars($pyjama['price']); ?></p>
+			<a href="product.php?pid=pyjamas-<?php echo $pyjama['pid']; ?>">View More</a>
 			<input type='text' name='quantity' value=1 />
-			<button onclick='addToCart(Pyjamas1)'>Add to Cart!</button>
+			<button onclick='addToCart(Pyjamas<?php echo $pyjama['pid']; ?>)'>Add to Cart!</button>
 		</li>
 		
 		<br><br><br><br>
-		
-		<li id='Pyjamas2'>
-			<img src="images/pyjamas2.webp" alt="red pyjama" width="150">
-			<p><strong>Red Printed Pyjamas</strong></p>
-			<p>Price: $20</p>
-			<a href="Pyjamas2.php" target=_blank>View More</a>
-			<input type='text' name='quantity' value=1 />
-			<button onclick='addToCart(Pyjamas2)'>Add to Cart!</button>
-		</li>
+		<?php endforeach; ?>
 	</ol>
 
 	<h3>Your Shopping Cart</h3>
 	<div style='margin: 20px;'>
 		<p>Remove items from cart:</p>
-		<button onclick="removeFromCart('black pyjama')">Remove Black Pyjama</button>
-		<button onclick="removeFromCart('red pyjama')">Remove Red Pyjama</button>
+		<?php foreach ($pyjamas as $pyjama): ?>
+		<button onclick="removeFromCart('<?php echo strtolower(htmlspecialchars($pyjama['name'])); ?>')">Remove <?php echo htmlspecialchars($pyjama['name']); ?></button>
+		<?php endforeach; ?>
 	</div>
 	<ol></ol>
 <script src="script.js"></script>

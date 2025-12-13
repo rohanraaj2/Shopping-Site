@@ -1,3 +1,13 @@
+<?php
+// Load and parse the JSON file
+$jsonFile = 'productdata.json';
+$jsonData = file_get_contents($jsonFile);
+$productsData = json_decode($jsonData, true);
+
+// Get jackets data
+$jackets = $productsData['jackets'];
+?>
+
 <!DOCTYPE html>
 <html>
 <head><title>Jackets</title>
@@ -19,33 +29,29 @@
 	</select>
 	</p>
 	
-	<ol id="productList">>
-		<li id='Jacket1'>
-			<img src="images/jacket1.webp" alt="leather jacket" width="150">
-			<p><strong>Leather Jacket</strong></p>
-			<p>Price: $100</p>
-			<a href="Jacket1.php">View More</a>
+	<ol id="productList">
+		<?php foreach ($jackets as $jacket): ?>
+		<li id='Jacket<?php echo $jacket['pid']; ?>'>
+			<img src="<?php echo htmlspecialchars($jacket['imagepath']); ?>" 
+			     alt="<?php echo htmlspecialchars($jacket['name']); ?>" 
+			     width="150">
+			<p><strong><?php echo htmlspecialchars($jacket['name']); ?></strong></p>
+			<p>Price: $<?php echo htmlspecialchars($jacket['price']); ?></p>
+			<a href="product.php?pid=jackets-<?php echo $jacket['pid']; ?>">View More</a>
 			<input type='text' name='quantity' value=1 />
-			<button onclick='addToCart(Jacket1)'>Add to Cart!</button>
+			<button onclick='addToCart(Jacket<?php echo $jacket['pid']; ?>)'>Add to Cart!</button>
 		</li>
 		
 		<br><br><br><br>
-		
-		<li id='Jacket2'>
-			<img src="images/jacket2.webp" alt="puffer jacket" width="150">
-			<p><strong>Puffer Jacket</strong></p>
-			<p>Price: $120</p>
-			<a href="Jacket2.php">View More</a>
-			<input type='text' name='quantity' value=1 />
-			<button onclick='addToCart(Jacket2)'>Add to Cart!</button>
-		</li>
+		<?php endforeach; ?>
 	</ol>
 	
 	<h3>Your Shopping Cart</h3>
 	<div style='margin: 20px;'>
 		<p>Remove items from cart:</p>
-		<button onclick="removeFromCart('leather jacket')">Remove Leather Jacket</button>
-		<button onclick="removeFromCart('puffer jacket')">Remove Puffer Jacket</button>
+		<?php foreach ($jackets as $jacket): ?>
+		<button onclick="removeFromCart('<?php echo strtolower(htmlspecialchars($jacket['name'])); ?>')">Remove <?php echo htmlspecialchars($jacket['name']); ?></button>
+		<?php endforeach; ?>
 	</div>
 	<ol></ol>
 <script src="script.js"></script>

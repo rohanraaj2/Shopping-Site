@@ -1,3 +1,12 @@
+<?php
+// Load and parse the JSON file
+$jsonFile = 'productdata.json';
+$jsonData = file_get_contents($jsonFile);
+$productsData = json_decode($jsonData, true);
+
+// Get hoodies data
+$hoodies = $productsData['hoodies'];
+?>
 
 <!DOCTYPE html>
 <html>
@@ -21,34 +30,29 @@
 	</p>
 	
 	<ol id="productList">
-		<li id='Hoodie1'>
-			<img src="images/hoodie1.jpeg" alt="code hoodie" width="150">
-			<p><strong>Code Hoodie</strong></p>
-			<p>Price: $20</p>
-			<a href="Hoodie1.php">View More</a>
+		<?php foreach ($hoodies as $hoodie): ?>
+		<li id='Hoodie<?php echo $hoodie['pid']; ?>'>
+			<img src="<?php echo htmlspecialchars($hoodie['imagepath']); ?>" 
+			     alt="<?php echo htmlspecialchars($hoodie['name']); ?>" 
+			     width="150">
+			<p><strong><?php echo htmlspecialchars($hoodie['name']); ?></strong></p>
+			<p>Price: $<?php echo htmlspecialchars($hoodie['price']); ?></p>
+			<a href="product.php?pid=hoodies-<?php echo $hoodie['pid']; ?>">View More</a>
 			<input type='text' name='quantity' value=1 />
-			<button onclick='addToCart(Hoodie1)'>Add to Cart!</button>
+			<button onclick='addToCart(Hoodie<?php echo $hoodie['pid']; ?>)'>Add to Cart!</button>
 		</li>
 		
 		<br><br><br><br>
-		
-		<li id='Hoodie2'>
-			<img src="images/hoodie2.jpg" alt="gym hoodie" width="150">
-			<p><strong>Gym Hoodie</strong></p>
-			<p>Price: $20</p>
-			<a href="Hoodie2.php">View More</a>
-			<input type='text'  name='quantity' value=1 />
-			<button onclick='addToCart(Hoodie2)'>Add to Cart!</button>
-		</li>
-		
+		<?php endforeach; ?>
 	</ol>
 	
 	<hr>
 	<h3>Your Shopping Cart</h3>
 	<div style='margin: 20px;'>
 		<p>Remove items from cart:</p>
-		<button onclick="removeFromCart('code hoodie')">Remove Code Hoodie</button>
-		<button onclick="removeFromCart('gym hoodie')">Remove Gym Hoodie</button>
+		<?php foreach ($hoodies as $hoodie): ?>
+		<button onclick="removeFromCart('<?php echo strtolower(htmlspecialchars($hoodie['name'])); ?>')">Remove <?php echo htmlspecialchars($hoodie['name']); ?></button>
+		<?php endforeach; ?>
 	</div>
 	<ol></ol>
 <script src="script.js"></script>
