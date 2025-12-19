@@ -5,12 +5,13 @@ $welcomeTitle = "Welcome to our webstore through PHP";
 <!DOCTYPE html>
 <html>    
     <head>
-        <p align="right"><button id="toggleDarkMode">Dark Mode</button></p>
         <title>Web Store 15</title>
         <link rel="stylesheet" type="text/css" href="mystyle.css">
     </head>
     
     <body class="index">
+        <p align="right"><button id="toggleDarkMode">Dark Mode</button></p>
+        <?php include 'cartIcon.php'; ?>
         <header>
             <h1><?php echo $welcomeTitle; ?></h1>
 

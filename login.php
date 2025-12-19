@@ -1,16 +1,15 @@
-<!DOCTYPE hmtl>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Please log in</title>
-	
-	<p align="right">
-    <button id="toggleDarkMode">Dark Mode</button>
-    <button id="returnHome">Home</button>
-</p>
-	
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
 <body class='contact'>
+	<p align="right">
+		<button id="toggleDarkMode">Dark Mode</button>
+		<button id="returnHome">Home</button>
+	</p>
+	<?php session_start(); include 'cartIcon.php'; ?>
 <header>
 <h1>Please log in with your credentials</h1><br>
 </header>

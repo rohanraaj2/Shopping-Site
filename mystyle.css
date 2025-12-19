@@ -167,3 +167,50 @@ ul.contact {
     flex-direction: row;
     flex-wrap: wrap; /* so they don’t overflow */
 }
+/* SHOPPING CART ICON */
+.cart-icon-container {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.cart-link {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.cart-icon-empty,
+.cart-icon-full {
+    font-size: 32px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.cart-icon-empty:hover,
+.cart-icon-full:hover {
+    transform: scale(1.1);
+}
+
+.cart-icon-full {
+    filter: brightness(1.2);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+.dark-mode .cart-badge {
+    background-color: #ff4757;
+}

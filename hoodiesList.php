@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Load and parse the JSON file
 $jsonFile = 'productdata.json';
 $jsonData = file_get_contents($jsonFile);
@@ -10,15 +11,16 @@ $hoodies = $productsData['hoodies'];
 
 <!DOCTYPE html>
 <html>
-<head><title>Hoodies</title>
-
+<head>
+<title>Hoodies</title>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+<body>
 <p align="right">
     <button id="toggleDarkMode">Dark Mode</button>
     <button id="returnHome">Home</button>
 </p>
-
-<link rel="stylesheet" type="text/css" href="mystyle.css"></head>
-<body onload='displayCart()'>
+<?php include 'cartIcon.php'; ?>
 	<h2>Here is the list of our hoodies</h2>
 	
 	<p align='center'>
@@ -38,23 +40,53 @@ $hoodies = $productsData['hoodies'];
 			<p><strong><?php echo htmlspecialchars($hoodie['name']); ?></strong></p>
 			<p>Price: $<?php echo htmlspecialchars($hoodie['price']); ?></p>
 			<a href="product.php?pid=hoodies-<?php echo $hoodie['pid']; ?>">View More</a>
-			<input type='text' name='quantity' value=1 />
-			<button onclick='addToCart(Hoodie<?php echo $hoodie['pid']; ?>)'>Add to Cart!</button>
+			<input type='number' class='quantity-input-<?php echo $hoodie['pid']; ?>' min='1' value='1' style='width: 60px; margin: 10px;' />
+			<button onclick='addProductToCart("hoodies-<?php echo $hoodie['pid']; ?>", "<?php echo htmlspecialchars($hoodie['name']); ?>", <?php echo $hoodie['price']; ?>, "hoodies", "<?php echo htmlspecialchars($hoodie['imagepath']); ?>", <?php echo $hoodie['pid']; ?>)'>Add to Cart!</button>
 		</li>
 		
 		<br><br><br><br>
 		<?php endforeach; ?>
 	</ol>
-	
-	<hr>
-	<h3>Your Shopping Cart</h3>
-	<div style='margin: 20px;'>
-		<p>Remove items from cart:</p>
-		<?php foreach ($hoodies as $hoodie): ?>
-		<button onclick="removeFromCart('<?php echo strtolower(htmlspecialchars($hoodie['name'])); ?>')">Remove <?php echo htmlspecialchars($hoodie['name']); ?></button>
-		<?php endforeach; ?>
-	</div>
-	<ol></ol>
+<script>
+// Shopping Cart Function
+function addProductToCart(productId, productName, price, category, image, pid) {
+    let quantityInput = document.getElementById('quantity-' + pid);
+    if (!quantityInput) {
+        quantityInput = document.querySelector('.quantity-input-' + pid);
+    }
+    const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+    
+    const formData = new URLSearchParams();
+    formData.append('action', 'add');
+    formData.append('productId', productId);
+    formData.append('productName', productName);
+    formData.append('price', price);
+    formData.append('quantity', quantity);
+    formData.append('category', category);
+    formData.append('image', image);
+    
+    fetch('cartHandler.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString()
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Product added to cart!');
+            location.reload();
+        } else {
+            alert('Failed to add product: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while adding to cart');
+    });
+}
+</script>
 <script src="script.js"></script>
 </body>
 </html>

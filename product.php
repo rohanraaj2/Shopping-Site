@@ -80,15 +80,14 @@ if(isset($_GET["pid"])) {
 <html>
 <head>
     <title><?php echo $product1 ? htmlspecialchars($product1['name']) : 'Product Details'; ?></title>
-    
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+<body onload="<?php if($product1) echo 'getTotalPrice(' . $product1['price'] . ')'; ?>">
     <p align="right">
         <button id="toggleDarkMode">Dark Mode</button>
         <button id="returnHome">Home</button>
     </p>
-    
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
-</head>
-<body onload="<?php if($product1) echo 'getTotalPrice(' . $product1['price'] . ')'; ?>">
+    <?php session_start(); include 'cartIcon.php'; ?>
     
     <?php if ($error): ?>
         <div style="color: red; padding: 20px; border: 2px solid red; margin: 20px;">
@@ -115,7 +114,8 @@ if(isset($_GET["pid"])) {
                         <p>Produced in: <em><?php echo htmlspecialchars($product1['country']); ?></em></p>
                         <p>Category: <em><?php echo htmlspecialchars($product1['category']); ?> - <?php echo htmlspecialchars($product1['subcategory']); ?></em></p>
                         <p>Price: <strong>$<?php echo htmlspecialchars($product1['price']); ?></strong></p>
-                        <button>Add to cart</button>
+                        <input type='number' id='quantity-1' min='1' value='1' style='width: 60px; margin: 10px;' />
+                        <button onclick='addProductToCart("<?php echo $pid1Parts[0]; ?>-<?php echo $product1['pid']; ?>", "<?php echo htmlspecialchars($product1['name']); ?>", <?php echo $product1['price']; ?>, "<?php echo $pid1Parts[0]; ?>", "<?php echo htmlspecialchars($product1['imagepath']); ?>", "1")'>Add to cart</button>
                     </li>
                 </div>
                 
@@ -131,7 +131,8 @@ if(isset($_GET["pid"])) {
                         <p>Produced in: <em><?php echo htmlspecialchars($product2['country']); ?></em></p>
                         <p>Category: <em><?php echo htmlspecialchars($product2['category']); ?> - <?php echo htmlspecialchars($product2['subcategory']); ?></em></p>
                         <p>Price: <strong>$<?php echo htmlspecialchars($product2['price']); ?></strong></p>
-                        <button>Add to cart</button>
+                        <input type='number' id='quantity-2' min='1' value='1' style='width: 60px; margin: 10px;' />
+                        <button onclick='addProductToCart("<?php echo $pid2Parts[0]; ?>-<?php echo $product2['pid']; ?>", "<?php echo htmlspecialchars($product2['name']); ?>", <?php echo $product2['price']; ?>, "<?php echo $pid2Parts[0]; ?>", "<?php echo htmlspecialchars($product2['imagepath']); ?>", "2")'>Add to cart</button>
                     </li>
                 </div>
                 
@@ -150,7 +151,8 @@ if(isset($_GET["pid"])) {
                 <p>Category: <em><?php echo htmlspecialchars($product1['category']); ?> - <?php echo htmlspecialchars($product1['subcategory']); ?></em></p>
                 <p>Price: <strong>$<?php echo htmlspecialchars($product1['price']); ?></strong></p>
                 <label id="priceAfterTaxes">Price after taxes: getTotalPrice(<?php echo $product1['price']; ?>)</label>
-                <button>Add to cart</button>
+                <input type='number' id='quantity-single' min='1' value='1' style='width: 60px; margin: 10px;' />
+                <button onclick='addProductToCartSingle("<?php echo $pidParts[0]; ?>-<?php echo $product1['pid']; ?>", "<?php echo htmlspecialchars($product1['name']); ?>", <?php echo $product1['price']; ?>, "<?php echo $pidParts[0]; ?>", "<?php echo htmlspecialchars($product1['imagepath']); ?>")'>Add to cart</button>
             </li>
         <?php endif; ?>
         

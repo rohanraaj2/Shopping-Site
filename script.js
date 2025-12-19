@@ -239,3 +239,145 @@ function validatePasswordStrength() {
 	
 	return strength;
 }
+
+// Shopping Cart Functions
+function addProductToCart(productId, productName, price, category, image, pid) {
+    // Try both ID and class selector for quantity input
+    let quantityInput = document.getElementById('quantity-' + pid);
+    if (!quantityInput) {
+        quantityInput = document.querySelector('.quantity-input-' + pid);
+    }
+    const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+    
+    console.log('Adding to cart:', { productId, productName, price, quantity, category, image });
+    
+    const formData = new URLSearchParams();
+    formData.append('action', 'add');
+    formData.append('productId', productId);
+    formData.append('productName', productName);
+    formData.append('price', price);
+    formData.append('quantity', quantity);
+    formData.append('category', category);
+    formData.append('image', image);
+    
+    fetch('cartHandler.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString()
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        return response.text();
+    })
+    .then(text => {
+        console.log('Response text:', text);
+        try {
+            const data = JSON.parse(text);
+            if (data.success) {
+                alert('Product added to cart!');
+                location.reload();
+            } else {
+                alert('Failed to add product: ' + data.message);
+            }
+        } catch (e) {
+            console.error('JSON parse error:', e);
+            console.error('Response was:', text);
+            alert('Error: Invalid response from server');
+        }
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+        alert('An error occurred while adding to cart: ' + error.message);
+    });
+}
+
+function updateCartIcon(count) {
+    // Reload the page to update the cart icon
+    // Alternatively, you could update it dynamically with JavaScript
+    location.reload();
+}
+
+function getCartCount() {
+    fetch('cartHandler.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'action=getCount'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.count !== undefined) {
+            updateCartBadge(data.count);
+        }
+    })
+    .catch(error => {
+        console.error('Error getting cart count:', error);
+    });
+}
+
+function updateCartBadge(count) {
+    const badge = document.querySelector('.cart-badge');
+    const emptyIcon = document.querySelector('.cart-icon-empty');
+    const fullIcon = document.querySelector('.cart-icon-full');
+    
+    if (count > 0) {
+        if (badge) badge.textContent = count;
+        if (emptyIcon) emptyIcon.style.display = 'none';
+        if (fullIcon) fullIcon.style.display = 'inline';
+    } else {
+        if (emptyIcon) emptyIcon.style.display = 'inline';
+        if (fullIcon) fullIcon.style.display = 'none';
+    }
+}
+
+// For single product page
+function addProductToCartSingle(productId, productName, price, category, image) {
+    const quantityInput = document.getElementById('quantity-single');
+    const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+    
+    console.log('Adding to cart (single):', { productId, productName, price, quantity, category, image });
+    
+    const formData = new URLSearchParams();
+    formData.append('action', 'add');
+    formData.append('productId', productId);
+    formData.append('productName', productName);
+    formData.append('price', price);
+    formData.append('quantity', quantity);
+    formData.append('category', category);
+    formData.append('image', image);
+    
+    fetch('cartHandler.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString()
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        return response.text();
+    })
+    .then(text => {
+        console.log('Response text:', text);
+        try {
+            const data = JSON.parse(text);
+            if (data.success) {
+                alert('Product added to cart!');
+                location.reload();
+            } else {
+                alert('Failed to add product: ' + data.message);
+            }
+        } catch (e) {
+            console.error('JSON parse error:', e);
+            console.error('Response was:', text);
+            alert('Error: Invalid response from server');
+        }
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+        alert('An error occurred while adding to cart: ' + error.message);
+    });
+}

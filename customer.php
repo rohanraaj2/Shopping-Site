@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-	
-	<p align="right">
-    <button id="toggleDarkMode">Dark Mode</button>
-    <button id="returnHome">Home</button>
-	</p>
-
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
 <body class='contact'>
+	<p align="right">
+		<button id="toggleDarkMode">Dark Mode</button>
+		<button id="returnHome">Home</button>
+	</p>
+	<?php session_start(); include 'cartIcon.php'; ?>
 <header>
     <h1>Your Profile</h1>
 </header>

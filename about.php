@@ -10,16 +10,15 @@ $intro3 = "Thank you for choosing us!";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $heading; ?></title>
-
-    <p align="right">
-        <button id="toggleDarkMode">Dark Mode</button>
-        <button id="returnHome">Home</button>
-    </p>
-
     <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
 
 <body class='contact'>
+    <p align="right">
+        <button id="toggleDarkMode">Dark Mode</button>
+        <button id="returnHome">Home</button>
+    </p>
+    <?php session_start(); include 'cartIcon.php'; ?>
 <header>
     <h1><?php echo $heading; ?></h1>
 </header>
