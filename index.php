@@ -1,4 +1,5 @@
 <?php
+session_start();
 $welcomeTitle = "Welcome to our webstore through PHP";
 ?>
 <!DOCTYPE html>
@@ -37,8 +38,17 @@ $welcomeTitle = "Welcome to our webstore through PHP";
             <p>If you would like to <em>logout</em> please click
             <a href="logout.php" target="_blank">here</a></p>
         </footer>
-
-        <script src="script.js"></script>
+		
+		<form method="post" action="luckyDiscount.php">
+		<button type="submit" class="lucky-btn">🎲 Try Your Luck (20% OFF)</button>
+		</form>
+		<?php
+		if (isset($_SESSION["lucky_message"])) {
+		echo $_SESSION["lucky_message"];
+		unset($_SESSION["lucky_message"]);
+		}
+		?>
+	<script src="script.js"></script>
     </body>
 </html>
 

@@ -1,24 +1,32 @@
 // Get the button
 const toggleBtn = document.getElementById("toggleDarkMode");
 
-// Add click event
-toggleBtn.addEventListener("click", () => {
-    // Toggle dark mode class on the body
-    document.body.classList.toggle("dark-mode");
+// Apply saved dark mode on page load
+if (localStorage.getItem("darkMode") === "on") {
+    document.body.classList.add("dark-mode");
+    if (toggleBtn) toggleBtn.textContent = "Light Mode";
+}
 
-    // Optional: change button text
-    if (document.body.classList.contains("dark-mode")) {
-        toggleBtn.textContent = "Light Mode";
-    } else {
-        toggleBtn.textContent = "Dark Mode";
-    }
-});
+// Toggle dark mode on click
+if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "on");
+            toggleBtn.textContent = "Light Mode";
+        } else {
+            localStorage.setItem("darkMode", "off");
+            toggleBtn.textContent = "Dark Mode";
+        }
+    });
+}
 
 var homeBtn = document.getElementById("returnHome");
 
 if (homeBtn != null) {
     homeBtn.onclick = function() {
-        window.location.href = "index.html";
+        window.location.href = "index.php";
     };
 }
 
